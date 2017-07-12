@@ -27,7 +27,7 @@ module.exports = function (app, db) {
   });
 
   // Initialize strategies
-  require(path.resolve(path.join(__dirname,'./strategies/steam.js')))(config);
+  require(path.resolve(path.join(__dirname, './strategies/steam.js')))(config);
 
   // Add passport's middleware
   app.use(passport.initialize());

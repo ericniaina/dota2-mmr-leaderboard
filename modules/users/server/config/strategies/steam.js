@@ -14,9 +14,9 @@ var express = require('express'),
 
 module.exports = function (config) {
   passport.use(new SteamStrategy({
-    returnURL: 'http://localhost:3000/api/auth/steam/callback',
-    realm: 'http://localhost:3000/',
-    apiKey: '446CC5B77CC11047AD3CAAB3C4F1ACD4',
+    returnURL: config.steam.returnURL,
+    realm: config.steam.realm,
+    apiKey: config.steam.apiKey,
     passReqToCallback: true
   },
   function(req, identifier, profile, done) {

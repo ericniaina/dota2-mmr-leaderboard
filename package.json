@@ -71,6 +71,7 @@
     "passport-twitter": "~1.0.4",
     "serve-favicon": "~2.4.2",
     "socket.io": "^2.0.2",
+    "steam-id-convertor": "^1.0.1",
     "validator": "~7.0.0",
     "winston": "^2.3.1",
     "wiredep": "~4.0.0"

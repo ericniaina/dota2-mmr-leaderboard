@@ -53,6 +53,11 @@ module.exports = {
     clientSecret: process.env.GITHUB_SECRET || 'APP_SECRET',
     callbackURL: '/api/auth/github/callback'
   },
+  steam: {
+    returnURL: 'http://localhost:3000/api/auth/steam/callback',
+    realm: 'http://localhost:3000/',
+    apiKey: '446CC5B77CC11047AD3CAAB3C4F1ACD4'
+  },
   paypal: {
     clientID: process.env.PAYPAL_ID || 'CLIENT_ID',
     clientSecret: process.env.PAYPAL_SECRET || 'CLIENT_SECRET',

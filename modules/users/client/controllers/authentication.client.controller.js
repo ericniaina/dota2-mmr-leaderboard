@@ -24,7 +24,7 @@
     if (vm.authentication.user) {
       $location.path('/');
     }
-    
+
     // OAuth provider request
     function callOauthProvider(url) {
       if ($state.previous && $state.previous.href) {
