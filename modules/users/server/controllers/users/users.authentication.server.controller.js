@@ -134,7 +134,8 @@ exports.saveOAuthUserProfile = function (req, providerUserProfile, done) {
             displayName: providerUserProfile.displayName,
             profileImageURL: providerUserProfile.profileImageURL,
             provider: providerUserProfile.provider,
-            providerData: providerUserProfile.providerData
+            providerData: providerUserProfile.providerData,
+            steamID32: providerUserProfile.steamID32
           });
 
           // Email intentionally added later to allow defaults (sparse settings) to be applid.

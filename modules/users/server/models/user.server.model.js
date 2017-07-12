@@ -93,6 +93,9 @@ var UserSchema = new Schema({
   salt: {
     type: String
   },
+  steamID32: {
+    type: String
+  },
   profileImageURL: {
     type: String,
     default: 'modules/users/client/img/profile/default.png'

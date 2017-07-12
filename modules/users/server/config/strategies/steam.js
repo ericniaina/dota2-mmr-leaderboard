@@ -4,12 +4,10 @@
  * Module dependencies
  */
 
-var express = require('express'),
-  passport = require('passport'),
-  util = require('util'),
+var passport = require('passport'),
   users = require('../../controllers/users.server.controller'),
-  session = require('express-session'),
-  SteamStrategy = require('passport-steam').Strategy;
+  SteamStrategy = require('passport-steam').Strategy,
+  convertor = require('steam-id-convertor');
 
 
 module.exports = function (config) {
@@ -23,10 +21,11 @@ module.exports = function (config) {
     var providerData = profile._json;
     var providerUserProfile = {
       firstName: providerData.realname,
-      lastName: 'profile.name.familyName',
+      lastName: providerData.realname,
       displayName: providerData.realname,
-      email: 'ericniaina@msn.com',
-      username: 'profile.username',
+      email: '',
+      username: convertor.to32(providerData.steamid),
+      steamID32: convertor.to32(providerData.steamid),
       profileImageURL: providerData.avatar,
       provider: 'steam',
       providerIdentifierField: 'steamid',
