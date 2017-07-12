@@ -54,4 +54,8 @@ module.exports = function (app) {
   // Setting the paypal oauth routes
   app.route('/api/auth/paypal').get(users.oauthCall('paypal'));
   app.route('/api/auth/paypal/callback').get(users.oauthCallback('paypal'));
+
+  // Setting the steam oauth routes
+  app.route('/api/auth/steam').get(users.oauthCallback('steam'));
+  app.route('/api/auth/steam/callback').get(users.oauthCallback('steam'));
 };

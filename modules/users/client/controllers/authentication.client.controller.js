@@ -12,8 +12,6 @@
 
     vm.authentication = Authentication;
     vm.getPopoverMsg = PasswordValidator.getPopoverMsg;
-    vm.signup = signup;
-    vm.signin = signin;
     vm.callOauthProvider = callOauthProvider;
     vm.usernameRegex = /^(?=[\w.-]+$)(?!.*[._-]{2})(?!\.)(?!.*\.$).{3,34}$/;
 
@@ -26,33 +24,7 @@
     if (vm.authentication.user) {
       $location.path('/');
     }
-
-    function signup(isValid) {
-
-      if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'vm.userForm');
-
-        return false;
-      }
-
-      UsersService.userSignup(vm.credentials)
-        .then(onUserSignupSuccess)
-        .catch(onUserSignupError);
-    }
-
-    function signin(isValid) {
-
-      if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'vm.userForm');
-
-        return false;
-      }
-
-      UsersService.userSignin(vm.credentials)
-        .then(onUserSigninSuccess)
-        .catch(onUserSigninError);
-    }
-
+    
     // OAuth provider request
     function callOauthProvider(url) {
       if ($state.previous && $state.previous.href) {
