@@ -106,6 +106,7 @@ var UserSchema = new Schema({
   },
   providerData: {},
   additionalProvidersData: {},
+  dotaStats: {},
   roles: {
     type: [{
       type: String,

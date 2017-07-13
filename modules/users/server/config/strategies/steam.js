@@ -7,7 +7,8 @@
 var passport = require('passport'),
   users = require('../../controllers/users.server.controller'),
   SteamStrategy = require('passport-steam').Strategy,
-  convertor = require('steam-id-convertor');
+  convertor = require('steam-id-convertor'),
+  dotaApi = require('../../../../dota2data/server/updatePlayer');
 
 
 module.exports = function (config) {
@@ -32,6 +33,7 @@ module.exports = function (config) {
       providerData: providerData
     };
     users.saveOAuthUserProfile(req, providerUserProfile, done);
+    dotaApi.updatePlayer(providerUserProfile.steamID32);
   }
 ));
 };
