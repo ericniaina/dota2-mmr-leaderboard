@@ -58,6 +58,7 @@
     "mongoose": "~4.10.2",
     "morgan": "~1.8.1",
     "multer": "~1.3.0",
+    "node-dota2": "^0.1.2",
     "nodemailer": "~4.0.1",
     "owasp-password-strength-test": "~1.3.0",
     "passport": "~0.3.2",

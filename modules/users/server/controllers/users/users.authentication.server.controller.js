@@ -135,7 +135,9 @@ exports.saveOAuthUserProfile = function (req, providerUserProfile, done) {
             profileImageURL: providerUserProfile.profileImageURL,
             provider: providerUserProfile.provider,
             providerData: providerUserProfile.providerData,
-            steamID32: providerUserProfile.steamID32
+            steamID32: providerUserProfile.steamID32,
+            openDota2ProfileURL: 'https://opendota.com/players/' + providerUserProfile.steamID32,
+            dotaBuffProfileURL: 'https://www.dotabuff.com/players/' + providerUserProfile.steamID32
           });
 
           // Email intentionally added later to allow defaults (sparse settings) to be applid.

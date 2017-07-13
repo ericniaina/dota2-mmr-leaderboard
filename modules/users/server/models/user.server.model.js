@@ -15,6 +15,48 @@ var mongoose = require('mongoose'),
 owasp.config(config.shared.owasp);
 
 
+var PlayerInfoSchema = new Schema({
+  status: {
+    type: String,
+    trim: true,
+    default: ''
+  },
+  soloMMR: {
+    type: Number,
+    default: -1
+  },
+  partyMMR: {
+    type: Number,
+    default: -1
+  },
+  estMMR: {
+    type: Number,
+    default: -1
+  },
+  winLoss: {
+    wins: {
+      type: Number,
+      default: -1
+    },
+    losses: {
+      type: Number,
+      default: -1
+    },
+    winrate: {
+      type: Number,
+      default: -1
+    },
+    totalGames: {
+      type: Number,
+      default: -1
+    }
+  },
+  isPrime: {
+    type: String,
+    default: ''
+  }
+});
+
 /**
  * A Validation function for local strategy properties
  */
@@ -100,11 +142,20 @@ var UserSchema = new Schema({
     type: String,
     default: 'modules/users/client/img/profile/default.png'
   },
+  openDota2ProfileURL: {
+    type: String,
+    default: ''
+  },
+  dotaBuffProfileURL: {
+    type: String,
+    default: ''
+  },
   provider: {
     type: String,
     required: 'Provider is required'
   },
   providerData: {},
+  dotaStats: PlayerInfoSchema,
   additionalProvidersData: {},
   dotaStats: {},
   roles: {

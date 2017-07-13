@@ -12,7 +12,6 @@ var playerStats = function (playerID, apiKey) {
 
   var playerInfoJson = {
     status: '',
-    daysSinceLastMatch: '',
     soloMMR: '',
     partyMMR: '',
     estMMR: '',
@@ -22,9 +21,6 @@ var playerStats = function (playerID, apiKey) {
       winrate: '',
       totalGames: ''
     },
-    mostPlayed: [],
-    recentGames: [],
-    openDota2ProfileURL: 'https://opendota.com/players/' + playerID,
     isPrime: ''
   };
   return new Promise(function (resolve, reject) {
@@ -45,18 +41,18 @@ var playerStats = function (playerID, apiKey) {
           request(apiBase + '/wl', function (err, res) {
             if (err) {
               playerInfoJson.status = 'Error';
-              reject("error with wl request");
+              reject('error with wl request');
             }
             const data = JSON.parse(res.body);
-            if(data.lose == null || data.win == null){
-                reject("error fetching win loss data");
+            if (data.lose == null || data.win == null) {
+              reject('error fetching win loss data');
             }
             playerInfoJson.winLoss.losses = data.lose;
             playerInfoJson.winLoss.wins = data.win;
             playerInfoJson.winLoss.totalGames = data.lose + data.win;
             playerInfoJson.winLoss.winrate = (data.win / (data.lose + data.win));
             resolve(playerInfoJson);
-          })
+          });
         }
       }
     });
@@ -67,7 +63,6 @@ exports.updatePlayer = function (playerID) {
   var promisedData = playerStats(playerID, config.steam.apiKey);
   // Update MMR and stats
   promisedData.then(function(playerInfoJson) {
-    console.log(playerInfoJson);
     User.update({ steamID32: playerID }, { $set: { dotaStats: playerInfoJson } }, function () {
     });
   });
