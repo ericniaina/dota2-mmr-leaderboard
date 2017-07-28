@@ -5,24 +5,12 @@ var mongoose = require('mongoose'),
   path = require('path'),
   config = require(path.resolve('./config/config')),
   request = require('request'),
-  moment = require('moment');
+  PlayerInfoSchema = mongoose.model('PlayerInfoSchema');;
 
 var playerStats = function (playerID, apiKey) {
   var apiBase = 'https://api.opendota.com/api/players/' + playerID;
 
-  var playerInfoJson = {
-    status: '',
-    soloMMR: '',
-    partyMMR: '',
-    estMMR: '',
-    winLoss: {
-      wins: '',
-      losses: '',
-      winrate: '',
-      totalGames: ''
-    },
-    isPrime: ''
-  };
+  var playerInfoJson = new PlayerInfoSchema();
   return new Promise(function (resolve, reject) {
     request(apiBase, function (err, res) {
       if (err) {

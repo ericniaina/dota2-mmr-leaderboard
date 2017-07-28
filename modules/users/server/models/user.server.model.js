@@ -57,6 +57,8 @@ var PlayerInfoSchema = new Schema({
   }
 });
 
+mongoose.model('PlayerInfoSchema', PlayerInfoSchema);
+
 /**
  * A Validation function for local strategy properties
  */
@@ -157,7 +159,6 @@ var UserSchema = new Schema({
   providerData: {},
   dotaStats: PlayerInfoSchema,
   additionalProvidersData: {},
-  dotaStats: {},
   roles: {
     type: [{
       type: String,
